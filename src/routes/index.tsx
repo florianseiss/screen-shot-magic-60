@@ -59,8 +59,42 @@ const offers = [
 function Index() {
   return (
     <main className="surface-sky overflow-x-hidden">
+      {/* Header */}
+      <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#" className="font-display text-xl">
+            Michaela Seiß
+          </a>
+          <ul className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
+            <li>
+              <a href="#ueber-mich" className="transition hover:text-primary">
+                Über mich
+              </a>
+            </li>
+            <li>
+              <a href="#angebote" className="transition hover:text-primary">
+                Angebot
+              </a>
+            </li>
+            <li>
+              <a href="#zertifizierungen" className="transition hover:text-primary">
+                Zertifizierungen
+              </a>
+            </li>
+            <li>
+              <a
+                href="#kontakt"
+                className="rounded-full bg-primary px-5 py-2.5 text-primary-foreground transition hover:brightness-110"
+              >
+                Kontakt
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       {/* Hero */}
-      <section className="relative min-h-[92vh] overflow-hidden">
+      <section className="relative min-h-[92vh] overflow-hidden pt-20">
         <img
           src={heroImg}
           alt="Frau atmet mit geschlossenen Augen in einer sonnigen steirischen Landschaft"
