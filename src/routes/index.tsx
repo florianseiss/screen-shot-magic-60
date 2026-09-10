@@ -378,7 +378,7 @@ function Index() {
                 Kennenlerngespräch anfragen
               </button>
               <p className="text-center text-xs text-muted-foreground">
-                Oder direkt per E-Mail: kontakt@michaela-seiss.at
+                Oder direkt per E-Mail: office@transland.at
               </p>
             </form>
           </Reveal>
