@@ -255,7 +255,7 @@ function Index() {
       </section>
 
       {/* Zertifizierungen */}
-      <section className="bg-sky-soft/60 px-6 py-24 md:py-32">
+      <section id="zertifizierungen" className="bg-sky-soft/60 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-5xl text-center">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Vertrauen</p>
