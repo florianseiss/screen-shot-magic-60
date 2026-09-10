@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import heroImg from "@/assets/hero-breath.jpg";
-import sessionImg from "@/assets/session-room.jpg";
 import handsImg from "@/assets/hands-breath.jpg";
 import landscapeImg from "@/assets/styria-landscape.jpg";
+import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
+import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
+import studioDetailAsset from "@/assets/studio-detail.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -234,24 +236,53 @@ function Index() {
         </div>
       </section>
 
-      {/* Session Bild */}
+      {/* Studio-Einblicke */}
       <section className="px-6 pb-24 md:pb-32">
-        <Reveal className="mx-auto max-w-6xl">
-          <div className="relative overflow-hidden rounded-[3rem] shadow-soft">
-            <img
-              src={sessionImg}
-              alt="Heller, gemütlicher Raum mit Matten, Decken und Kerzen für Breathwork-Sessions"
-              width={1408}
-              height={1008}
-              loading="lazy"
-              className="h-[26rem] w-full object-cover md:h-[34rem]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/45 to-transparent" />
-            <blockquote className="absolute bottom-10 left-8 max-w-md text-2xl leading-snug text-primary-foreground md:left-14 md:text-3xl">
+        <div className="mx-auto max-w-6xl">
+          <Reveal className="mb-8 max-w-lg">
+            <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Einblicke</p>
+            <h2 className="mt-4 text-3xl leading-tight md:text-4xl">Ein Raum zum Ankommen</h2>
+          </Reveal>
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-5">
+            <Reveal className="col-span-2 md:col-span-7">
+              <img
+                src={studioLightAsset.url}
+                alt="Heller Breathwork-Raum mit Matten, Kissen und Pflanzen"
+                width={768}
+                height={1024}
+                loading="lazy"
+                className="h-80 w-full rounded-[2rem] object-cover shadow-card md:h-[34rem]"
+              />
+            </Reveal>
+            <div className="col-span-2 grid grid-cols-2 gap-3 md:col-span-5 md:grid-cols-1 md:gap-5">
+              <Reveal delay={100}>
+                <img
+                  src={studioGroupAsset.url}
+                  alt="Vorbereitete Matten und Bolster für eine gemeinsame Breathwork-Session"
+                  width={768}
+                  height={1024}
+                  loading="lazy"
+                  className="h-52 w-full rounded-[2rem] object-cover shadow-card md:h-[16.375rem]"
+                />
+              </Reveal>
+              <Reveal delay={180}>
+                <img
+                  src={studioDetailAsset.url}
+                  alt="Achtsam vorbereiteter Platz mit Sitzkissen, Kerzen und Atemzubehör"
+                  width={768}
+                  height={1024}
+                  loading="lazy"
+                  className="h-52 w-full rounded-[2rem] object-cover shadow-card md:h-[16.375rem]"
+                />
+              </Reveal>
+            </div>
+          </div>
+          <Reveal delay={120} className="mt-7 text-center">
+            <blockquote className="font-display text-2xl leading-snug text-primary md:text-3xl">
               „Dein Atem kennt den Weg zurück zu dir.“
             </blockquote>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
 
       {/* Zertifizierungen */}
