@@ -387,7 +387,7 @@ function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border/70 px-6 py-14">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl">Michaela Seiß</p>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -397,9 +397,17 @@ function Index() {
           <p className="max-w-xs text-sm text-muted-foreground">
             Atme. Spüre. Komm bei dir an.
           </p>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Michaela Seiß
-          </p>
+          <div className="flex flex-col items-center gap-3 md:items-end">
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} Michaela Seiß
+            </p>
+            <a
+              href="#impressum"
+              className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+            >
+              Impressum
+            </a>
+          </div>
         </div>
       </footer>
     </main>
