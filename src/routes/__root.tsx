@@ -77,11 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Michaela Seiß – Breathwork in der Steiermark" },
+      {
+        name: "description",
+        content:
+          "Breathwork mit Michaela Seiß in Weiz und Eggersdorf – bewusste Atemarbeit für Ruhe, Körpergefühl und echtes Loslassen.",
+      },
+      { name: "author", content: "Michaela Seiß" },
+      { property: "og:title", content: "Michaela Seiß – Breathwork in der Steiermark" },
+      {
+        property: "og:description",
+        content: "Bewusste Atemarbeit für Ruhe, Körpergefühl und echtes Loslassen.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -92,6 +99,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Karla:wght@300;400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
