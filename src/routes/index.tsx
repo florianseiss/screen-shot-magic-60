@@ -59,8 +59,42 @@ const offers = [
 function Index() {
   return (
     <main className="surface-sky overflow-x-hidden">
+      {/* Header */}
+      <header className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#" className="font-display text-xl">
+            Michaela Seiß
+          </a>
+          <ul className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex">
+            <li>
+              <a href="#ueber-mich" className="transition hover:text-primary">
+                Über mich
+              </a>
+            </li>
+            <li>
+              <a href="#angebote" className="transition hover:text-primary">
+                Angebot
+              </a>
+            </li>
+            <li>
+              <a href="#zertifizierungen" className="transition hover:text-primary">
+                Zertifizierungen
+              </a>
+            </li>
+            <li>
+              <a
+                href="#kontakt"
+                className="rounded-full bg-primary px-5 py-2.5 text-primary-foreground transition hover:brightness-110"
+              >
+                Kontakt
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       {/* Hero */}
-      <section className="relative min-h-[92vh] overflow-hidden">
+      <section className="relative min-h-[92vh] overflow-hidden pt-20">
         <img
           src={heroImg}
           alt="Frau atmet mit geschlossenen Augen in einer sonnigen steirischen Landschaft"
@@ -221,7 +255,7 @@ function Index() {
       </section>
 
       {/* Zertifizierungen */}
-      <section className="bg-sky-soft/60 px-6 py-24 md:py-32">
+      <section id="zertifizierungen" className="bg-sky-soft/60 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-5xl text-center">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Vertrauen</p>
@@ -344,7 +378,7 @@ function Index() {
                 Kennenlerngespräch anfragen
               </button>
               <p className="text-center text-xs text-muted-foreground">
-                Oder direkt per E-Mail: kontakt@michaela-seiss.at
+                Oder direkt per E-Mail: office@transland.at
               </p>
             </form>
           </Reveal>
@@ -353,7 +387,7 @@ function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border/70 px-6 py-14">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl">Michaela Seiß</p>
             <p className="mt-1 text-sm text-muted-foreground">
@@ -363,9 +397,17 @@ function Index() {
           <p className="max-w-xs text-sm text-muted-foreground">
             Atme. Spüre. Komm bei dir an.
           </p>
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Michaela Seiß
-          </p>
+          <div className="flex flex-col items-center gap-3 md:items-end">
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} Michaela Seiß
+            </p>
+            <a
+              href="#impressum"
+              className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+            >
+              Impressum
+            </a>
+          </div>
         </div>
       </footer>
     </main>
