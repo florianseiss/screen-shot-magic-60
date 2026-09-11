@@ -440,15 +440,15 @@ function Index() {
           <Reveal>
             <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Standort</p>
             <h2 className="mt-5 text-4xl leading-tight md:text-5xl">
-              Sessions in Weiz und Eggersdorf
+              Sessions in Weiz, Eggersdorf und Ilz
             </h2>
             <p className="mt-6 text-[1.05rem] leading-relaxed text-muted-foreground">
-              Meine Breathwork-Einheiten finden in ruhigen Räumen in Weiz und in Eggersdorf bei Graz
-              statt – mitten in der Steiermark, umgeben von Natur. Einzelsessions und kleine Gruppen
-              nach Vereinbarung.
+              Meine Breathwork-Einheiten finden in ruhigen Räumen in Weiz, in Eggersdorf bei Graz und
+              in Ilz statt – mitten in der Steiermark, umgeben von Natur. Einzelsessions und kleine
+              Gruppen nach Vereinbarung.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              {["Weiz", "Eggersdorf bei Graz", "Steiermark"].map((t) => (
+              {["Weiz", "Eggersdorf bei Graz", "Ilz", "Steiermark"].map((t) => (
                 <span
                   key={t}
                   className="rounded-full border border-primary/20 bg-secondary px-5 py-2 text-sm text-secondary-foreground"
