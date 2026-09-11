@@ -320,6 +320,42 @@ function Index() {
         </div>
       </section>
 
+      {/* Nächste Termine */}
+      <section id="termine" className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-5xl">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Termine</p>
+            <h2 className="mt-5 text-4xl md:text-5xl">Nächste Termine</h2>
+            <p className="mt-5 text-muted-foreground">
+              Die nächsten freien Einheiten – begrenzte Plätze, Anmeldung per Anruf oder E-Mail.
+            </p>
+          </Reveal>
+          <div className="mt-14 space-y-5">
+            {dates.map((d, i) => (
+              <Reveal key={d.date} delay={i * 120}>
+                <article className="flex flex-col gap-5 rounded-[2rem] border border-border/70 bg-card p-7 shadow-card transition hover:shadow-soft md:flex-row md:items-center md:justify-between md:p-8">
+                  <div className="flex flex-col gap-1">
+                    <p className="font-display text-2xl leading-snug text-primary">{d.date}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {d.time} · {d.place}
+                    </p>
+                    <p className="mt-1 text-[0.95rem]">{d.type}</p>
+                  </div>
+                  <a
+                    href={`mailto:${contact.email}?subject=${encodeURIComponent(
+                      `Buchung: ${d.type} am ${d.date}`,
+                    )}`}
+                    className="shrink-0 rounded-full bg-primary px-8 py-3.5 text-center text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
+                  >
+                    Buchen
+                  </a>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Zertifizierungen */}
       <section id="zertifizierungen" className="bg-sky-soft/60 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-5xl text-center">
