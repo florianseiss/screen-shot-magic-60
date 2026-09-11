@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import heroImg from "@/assets/hero-breath.jpg";
-import handsImg from "@/assets/hands-breath.jpg";
-import landscapeImg from "@/assets/styria-landscape.jpg";
+import portraitAsset from "@/assets/michaela-portrait.png.asset.json";
+import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
 import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
 import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
 import studioDetailAsset from "@/assets/studio-detail.jpg.asset.json";
