@@ -88,6 +88,37 @@ const dates = [
 ];
 
 
+function CallbackForm() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <form
+      className="mt-6 flex flex-col gap-3 rounded-[2rem] border border-border/70 bg-card p-6 text-left shadow-card sm:flex-row sm:items-center md:p-7"
+      onSubmit={(e) => {
+        e.preventDefault();
+        window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
+          "Bitte um Rückruf",
+        )}&body=${encodeURIComponent(`Bitte ruf mich zurück. Meine E-Mail: ${email}`)}`;
+      }}
+    >
+      <input
+        required
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Deine E-Mail für einen Rückruf"
+        className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
+      />
+      <button
+        type="submit"
+        className="shrink-0 rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
+      >
+        Rückruf
+      </button>
+    </form>
+  );
+}
+
 function Index() {
   return (
     <main className="surface-sky overflow-x-hidden">
