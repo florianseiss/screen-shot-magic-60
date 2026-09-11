@@ -470,7 +470,7 @@ function Index() {
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2">
+        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-3">
           {[
             {
               name: "Weiz",
@@ -481,6 +481,11 @@ function Index() {
               name: "Eggersdorf bei Graz",
               src: "https://www.openstreetmap.org/export/embed.html?bbox=15.4950%2C47.0900%2C15.5750%2C47.1400&layer=mapnik&marker=47.1150%2C15.5350",
               link: "https://www.openstreetmap.org/?mlat=47.1150&mlon=15.5350#map=13/47.1150/15.5350",
+            },
+            {
+              name: "Ilz",
+              src: "https://www.openstreetmap.org/export/embed.html?bbox=15.9000%2C47.0000%2C15.9800%2C47.0500&layer=mapnik&marker=47.0250%2C15.9400",
+              link: "https://www.openstreetmap.org/?mlat=47.0250&mlon=15.9400#map=13/47.0250/15.9400",
             },
           ].map((m, i) => (
             <Reveal key={m.name} delay={i * 140}>
