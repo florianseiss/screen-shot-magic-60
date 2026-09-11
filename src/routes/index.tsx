@@ -354,14 +354,51 @@ function Index() {
           </Reveal>
           <Reveal delay={120}>
             <img
-              src={landscapeImg}
-              alt="Sanfte grüne Hügellandschaft in der Steiermark bei Weiz"
+              src={eggersdorfAsset.url}
+              alt="Luftbild von Eggersdorf bei Graz mit Kirche, Ortszentrum und steirischen Hügeln"
               width={1600}
               height={912}
               loading="lazy"
               className="h-80 w-full rounded-[3rem] object-cover shadow-card md:h-96"
             />
           </Reveal>
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2">
+          {[
+            {
+              name: "Weiz",
+              src: "https://www.openstreetmap.org/export/embed.html?bbox=15.5850%2C47.1950%2C15.6650%2C47.2450&layer=mapnik&marker=47.2200%2C15.6250",
+              link: "https://www.openstreetmap.org/?mlat=47.2200&mlon=15.6250#map=13/47.2200/15.6250",
+            },
+            {
+              name: "Eggersdorf bei Graz",
+              src: "https://www.openstreetmap.org/export/embed.html?bbox=15.4950%2C47.0900%2C15.5750%2C47.1400&layer=mapnik&marker=47.1150%2C15.5350",
+              link: "https://www.openstreetmap.org/?mlat=47.1150&mlon=15.5350#map=13/47.1150/15.5350",
+            },
+          ].map((m, i) => (
+            <Reveal key={m.name} delay={i * 140}>
+              <div className="overflow-hidden rounded-[2rem] border border-border/70 bg-card shadow-card">
+                <iframe
+                  title={`Karte ${m.name}`}
+                  src={m.src}
+                  loading="lazy"
+                  className="h-72 w-full border-0"
+                />
+                <div className="flex items-center justify-between gap-4 px-6 py-4">
+                  <p className="text-sm font-medium">{m.name}</p>
+                  <a
+                    href={m.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs uppercase tracking-widest text-primary transition hover:brightness-110"
+                  >
+                    Größere Karte
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
