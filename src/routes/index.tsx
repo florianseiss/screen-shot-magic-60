@@ -109,6 +109,11 @@ function Index() {
               </a>
             </li>
             <li>
+              <a href="#termine" className="transition hover:text-primary">
+                Nächste Termine
+              </a>
+            </li>
+            <li>
               <a href="#zertifizierungen" className="transition hover:text-primary">
                 Zertifizierungen
               </a>
