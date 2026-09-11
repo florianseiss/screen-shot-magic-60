@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import heroImg from "@/assets/hero-breath.jpg";
@@ -6,6 +7,8 @@ import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
 import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
 import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
 import studioDetailAsset from "@/assets/studio-detail.jpg.asset.json";
+import gpbaBadge from "@/assets/gpba-badge.png.asset.json";
+import sevenDirectionsBadge from "@/assets/seven-directions-badge.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,6 +61,65 @@ const offers = [
   },
 ];
 
+const contact = {
+  phone: "+43 660 000 00 00",
+  phoneHref: "tel:+43660000000",
+  email: "office@transland.at",
+};
+
+const dates = [
+  {
+    date: "Sa, 27. September 2026",
+    time: "10:00 – 12:00",
+    place: "Weiz",
+    type: "Conscious Connected Breathwork · Gruppe",
+  },
+  {
+    date: "Fr, 10. Oktober 2026",
+    time: "18:30 – 20:00",
+    place: "Eggersdorf bei Graz",
+    type: "Slow Breath · Abendsession",
+  },
+  {
+    date: "Sa, 25. Oktober 2026",
+    time: "09:30 – 11:00",
+    place: "Ilz",
+    type: "1:1 Arbeit · Einzeltermin",
+  },
+];
+
+
+function CallbackForm() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <form
+      className="mt-6 flex flex-col gap-3 rounded-[2rem] border border-border/70 bg-card p-6 text-left shadow-card sm:flex-row sm:items-center md:p-7"
+      onSubmit={(e) => {
+        e.preventDefault();
+        window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
+          "Bitte um Rückruf",
+        )}&body=${encodeURIComponent(`Bitte ruf mich zurück. Meine E-Mail: ${email}`)}`;
+      }}
+    >
+      <input
+        required
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Deine E-Mail für einen Rückruf"
+        className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
+      />
+      <button
+        type="submit"
+        className="shrink-0 rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
+      >
+        Rückruf
+      </button>
+    </form>
+  );
+}
+
 function Index() {
   return (
     <main className="surface-sky overflow-x-hidden">
@@ -76,6 +138,11 @@ function Index() {
             <li>
               <a href="#angebote" className="transition hover:text-primary">
                 Angebot
+              </a>
+            </li>
+            <li>
+              <a href="#termine" className="transition hover:text-primary">
+                Nächste Termine
               </a>
             </li>
             <li>
@@ -285,6 +352,42 @@ function Index() {
         </div>
       </section>
 
+      {/* Nächste Termine */}
+      <section id="termine" className="px-6 pb-24 md:pb-32">
+        <div className="mx-auto max-w-5xl">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Termine</p>
+            <h2 className="mt-5 text-4xl md:text-5xl">Nächste Termine</h2>
+            <p className="mt-5 text-muted-foreground">
+              Die nächsten freien Einheiten – begrenzte Plätze, Anmeldung per Anruf oder E-Mail.
+            </p>
+          </Reveal>
+          <div className="mt-14 space-y-5">
+            {dates.map((d, i) => (
+              <Reveal key={d.date} delay={i * 120}>
+                <article className="flex flex-col gap-5 rounded-[2rem] border border-border/70 bg-card p-7 shadow-card transition hover:shadow-soft md:flex-row md:items-center md:justify-between md:p-8">
+                  <div className="flex flex-col gap-1">
+                    <p className="font-display text-2xl leading-snug text-primary">{d.date}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {d.time} · {d.place}
+                    </p>
+                    <p className="mt-1 text-[0.95rem]">{d.type}</p>
+                  </div>
+                  <a
+                    href={`mailto:${contact.email}?subject=${encodeURIComponent(
+                      `Buchung: ${d.type} am ${d.date}`,
+                    )}`}
+                    className="shrink-0 rounded-full bg-primary px-8 py-3.5 text-center text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
+                  >
+                    Buchen
+                  </a>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Zertifizierungen */}
       <section id="zertifizierungen" className="bg-sky-soft/60 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-5xl text-center">
@@ -302,23 +405,26 @@ function Index() {
               {
                 title: "Certified Practitioner",
                 sub: "Seven Directions® Breathwork",
+                img: sevenDirectionsBadge.url,
+                alt: "Zertifikat Certified Practitioner der Seven Directions Breathwork School",
               },
               {
                 title: "Ethically Compliant Breathworker",
                 sub: "Global Professional Breathwork Alliance (GPBA)",
+                img: gpbaBadge.url,
+                alt: "Siegel Ethically Compliant Breathworker der Global Professional Breathwork Alliance",
               },
             ].map((b, i) => (
               <Reveal key={b.title} delay={i * 140}>
                 <div className="flex h-full flex-col items-center gap-4 rounded-[2rem] border border-primary/15 bg-card px-8 py-10 shadow-card">
-                  <span
-                    aria-hidden
-                    className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-sky-soft text-primary"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor">
-                      <circle cx="12" cy="9" r="5.5" strokeWidth="1.2" />
-                      <path d="M8.5 14 L7 22 L12 19.5 L17 22 L15.5 14" strokeWidth="1.2" />
-                    </svg>
-                  </span>
+                  <img
+                    src={b.img}
+                    alt={b.alt}
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    className="h-28 w-28 object-contain md:h-32 md:w-32"
+                  />
                   <h3 className="text-xl">{b.title}</h3>
                   <p className="text-sm text-muted-foreground">{b.sub}</p>
                 </div>
@@ -334,15 +440,15 @@ function Index() {
           <Reveal>
             <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Standort</p>
             <h2 className="mt-5 text-4xl leading-tight md:text-5xl">
-              Sessions in Weiz und Eggersdorf
+              Sessions in Weiz, Eggersdorf und Ilz
             </h2>
             <p className="mt-6 text-[1.05rem] leading-relaxed text-muted-foreground">
-              Meine Breathwork-Einheiten finden in ruhigen Räumen in Weiz und in Eggersdorf bei Graz
-              statt – mitten in der Steiermark, umgeben von Natur. Einzelsessions und kleine Gruppen
-              nach Vereinbarung.
+              Meine Breathwork-Einheiten finden in ruhigen Räumen in Weiz, in Eggersdorf bei Graz und
+              in Ilz statt – mitten in der Steiermark, umgeben von Natur. Einzelsessions und kleine
+              Gruppen nach Vereinbarung.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              {["Weiz", "Eggersdorf bei Graz", "Steiermark"].map((t) => (
+              {["Weiz", "Eggersdorf bei Graz", "Ilz", "Steiermark"].map((t) => (
                 <span
                   key={t}
                   className="rounded-full border border-primary/20 bg-secondary px-5 py-2 text-sm text-secondary-foreground"
@@ -364,7 +470,7 @@ function Index() {
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-2">
+        <div className="mx-auto mt-16 grid max-w-6xl gap-6 md:grid-cols-3">
           {[
             {
               name: "Weiz",
@@ -375,6 +481,11 @@ function Index() {
               name: "Eggersdorf bei Graz",
               src: "https://www.openstreetmap.org/export/embed.html?bbox=15.4950%2C47.0900%2C15.5750%2C47.1400&layer=mapnik&marker=47.1150%2C15.5350",
               link: "https://www.openstreetmap.org/?mlat=47.1150&mlon=15.5350#map=13/47.1150/15.5350",
+            },
+            {
+              name: "Ilz",
+              src: "https://www.openstreetmap.org/export/embed.html?bbox=15.9000%2C47.0000%2C15.9800%2C47.0500&layer=mapnik&marker=47.0250%2C15.9400",
+              link: "https://www.openstreetmap.org/?mlat=47.0250&mlon=15.9400#map=13/47.0250/15.9400",
             },
           ].map((m, i) => (
             <Reveal key={m.name} delay={i * 140}>
@@ -408,50 +519,39 @@ function Index() {
       <section id="kontakt" className="bg-sky-soft/60 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <h2 className="text-4xl leading-tight text-balance-tight md:text-5xl">
-              Bereit, deinen Atem neu zu entdecken?
+            <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Kontakt</p>
+            <h2 className="mt-5 text-4xl leading-tight text-balance-tight md:text-5xl">
+              Ruf mich an oder schreib mir
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-              Schreib mir kurz, was du dir wünschst – wir finden gemeinsam die passende Einheit für
-              dich. Ein kostenloses Kennenlerngespräch ist jederzeit möglich.
+              Am schnellsten geht es direkt – telefonisch oder per E-Mail. Wenn du lieber
+              zurückgerufen wirst, lass einfach deine E-Mail-Adresse da.
             </p>
           </Reveal>
-          <Reveal delay={140}>
-            <form
-              className="mt-12 space-y-4 rounded-[2.5rem] border border-border/70 bg-card p-8 text-left shadow-card md:p-10"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  required
-                  placeholder="Name"
-                  className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-                />
-                <input
-                  required
-                  type="email"
-                  placeholder="E-Mail"
-                  className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-                />
-              </div>
-              <textarea
-                rows={4}
-                placeholder="Deine Nachricht"
-                className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-              />
-              <button
-                type="submit"
-                className="w-full rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
+          <Reveal delay={120}>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2">
+              <a
+                href={contact.phoneHref}
+                className="flex flex-col items-center gap-2 rounded-[2rem] border border-primary/15 bg-card px-8 py-9 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
               >
-                Kennenlerngespräch anfragen
-              </button>
-              <p className="text-center text-xs text-muted-foreground">
-                Oder direkt per E-Mail: office@transland.at
-              </p>
-            </form>
+                <span className="text-xs uppercase tracking-[0.3em] text-primary/60">Anrufen</span>
+                <span className="font-display text-2xl text-primary">{contact.phone}</span>
+              </a>
+              <a
+                href={`mailto:${contact.email}`}
+                className="flex flex-col items-center gap-2 rounded-[2rem] border border-primary/15 bg-card px-8 py-9 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+              >
+                <span className="text-xs uppercase tracking-[0.3em] text-primary/60">Schreiben</span>
+                <span className="font-display text-2xl text-primary">{contact.email}</span>
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
+            <CallbackForm />
           </Reveal>
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="border-t border-border/70 px-6 py-14">
