@@ -373,23 +373,26 @@ function Index() {
               {
                 title: "Certified Practitioner",
                 sub: "Seven Directions® Breathwork",
+                img: sevenDirectionsBadge.url,
+                alt: "Zertifikat Certified Practitioner der Seven Directions Breathwork School",
               },
               {
                 title: "Ethically Compliant Breathworker",
                 sub: "Global Professional Breathwork Alliance (GPBA)",
+                img: gpbaBadge.url,
+                alt: "Siegel Ethically Compliant Breathworker der Global Professional Breathwork Alliance",
               },
             ].map((b, i) => (
               <Reveal key={b.title} delay={i * 140}>
                 <div className="flex h-full flex-col items-center gap-4 rounded-[2rem] border border-primary/15 bg-card px-8 py-10 shadow-card">
-                  <span
-                    aria-hidden
-                    className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/20 bg-sky-soft text-primary"
-                  >
-                    <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor">
-                      <circle cx="12" cy="9" r="5.5" strokeWidth="1.2" />
-                      <path d="M8.5 14 L7 22 L12 19.5 L17 22 L15.5 14" strokeWidth="1.2" />
-                    </svg>
-                  </span>
+                  <img
+                    src={b.img}
+                    alt={b.alt}
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    className="h-28 w-28 object-contain md:h-32 md:w-32"
+                  />
                   <h3 className="text-xl">{b.title}</h3>
                   <p className="text-sm text-muted-foreground">{b.sub}</p>
                 </div>
