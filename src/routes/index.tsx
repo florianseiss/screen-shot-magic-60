@@ -6,6 +6,8 @@ import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
 import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
 import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
 import studioDetailAsset from "@/assets/studio-detail.jpg.asset.json";
+import gpbaBadge from "@/assets/gpba-badge.png.asset.json";
+import sevenDirectionsBadge from "@/assets/seven-directions-badge.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
