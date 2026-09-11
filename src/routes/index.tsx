@@ -154,8 +154,8 @@ function Index() {
                 className="absolute -left-6 -top-6 h-40 w-40 rounded-full bg-sand/70 blur-2xl"
               />
               <img
-                src={handsImg}
-                alt="Hände ruhen auf Brustkorb und Bauch beim bewussten Atmen"
+                src={portraitAsset.url}
+                alt="Michaela Seiß, zertifizierte Breathwork-Trainerin, lächelt in die Kamera"
                 width={1200}
                 height={1200}
                 loading="lazy"
