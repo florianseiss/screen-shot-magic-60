@@ -60,6 +60,34 @@ const offers = [
   },
 ];
 
+const contact = {
+  phone: "+43 660 000 00 00",
+  phoneHref: "tel:+43660000000",
+  email: "office@transland.at",
+};
+
+const dates = [
+  {
+    date: "Sa, 27. September 2026",
+    time: "10:00 – 12:00",
+    place: "Weiz",
+    type: "Conscious Connected Breathwork · Gruppe",
+  },
+  {
+    date: "Fr, 10. Oktober 2026",
+    time: "18:30 – 20:00",
+    place: "Eggersdorf bei Graz",
+    type: "Slow Breath · Abendsession",
+  },
+  {
+    date: "Sa, 25. Oktober 2026",
+    time: "09:30 – 11:00",
+    place: "Ilz",
+    type: "1:1 Arbeit · Einzeltermin",
+  },
+];
+
+
 function Index() {
   return (
     <main className="surface-sky overflow-x-hidden">
