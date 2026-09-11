@@ -482,50 +482,39 @@ function Index() {
       <section id="kontakt" className="bg-sky-soft/60 px-6 py-24 md:py-32">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
-            <h2 className="text-4xl leading-tight text-balance-tight md:text-5xl">
-              Bereit, deinen Atem neu zu entdecken?
+            <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Kontakt</p>
+            <h2 className="mt-5 text-4xl leading-tight text-balance-tight md:text-5xl">
+              Ruf mich an oder schreib mir
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-              Schreib mir kurz, was du dir wünschst – wir finden gemeinsam die passende Einheit für
-              dich. Ein kostenloses Kennenlerngespräch ist jederzeit möglich.
+              Am schnellsten geht es direkt – telefonisch oder per E-Mail. Wenn du lieber
+              zurückgerufen wirst, lass einfach deine E-Mail-Adresse da.
             </p>
           </Reveal>
-          <Reveal delay={140}>
-            <form
-              className="mt-12 space-y-4 rounded-[2.5rem] border border-border/70 bg-card p-8 text-left shadow-card md:p-10"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  required
-                  placeholder="Name"
-                  className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-                />
-                <input
-                  required
-                  type="email"
-                  placeholder="E-Mail"
-                  className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-                />
-              </div>
-              <textarea
-                rows={4}
-                placeholder="Deine Nachricht"
-                className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-              />
-              <button
-                type="submit"
-                className="w-full rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
+          <Reveal delay={120}>
+            <div className="mt-12 grid gap-5 sm:grid-cols-2">
+              <a
+                href={contact.phoneHref}
+                className="flex flex-col items-center gap-2 rounded-[2rem] border border-primary/15 bg-card px-8 py-9 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
               >
-                Kennenlerngespräch anfragen
-              </button>
-              <p className="text-center text-xs text-muted-foreground">
-                Oder direkt per E-Mail: office@transland.at
-              </p>
-            </form>
+                <span className="text-xs uppercase tracking-[0.3em] text-primary/60">Anrufen</span>
+                <span className="font-display text-2xl text-primary">{contact.phone}</span>
+              </a>
+              <a
+                href={`mailto:${contact.email}`}
+                className="flex flex-col items-center gap-2 rounded-[2rem] border border-primary/15 bg-card px-8 py-9 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
+              >
+                <span className="text-xs uppercase tracking-[0.3em] text-primary/60">Schreiben</span>
+                <span className="font-display text-2xl text-primary">{contact.email}</span>
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
+            <CallbackForm />
           </Reveal>
         </div>
       </section>
+
 
       {/* Footer */}
       <footer className="border-t border-border/70 px-6 py-14">
