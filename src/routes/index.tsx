@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import heroImg from "@/assets/hero-breath.jpg";
@@ -62,8 +62,8 @@ const offers = [
 ];
 
 const contact = {
-  phone: "+43 660 000 00 00",
-  phoneHref: "tel:+43660000000",
+  phone: "+43 660 4643 406",
+  phoneHref: "tel:+436604643406",
   email: "office@transland.at",
 };
 
@@ -88,6 +88,294 @@ const dates = [
   },
 ];
 
+
+function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Datenschutzerklärung"
+      className="fixed inset-0 z-[100] flex items-start justify-center bg-background/90 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative my-8 w-full max-w-3xl overflow-hidden rounded-[2.5rem] border border-border/70 bg-card p-8 shadow-soft md:p-12"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Schließen"
+          className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-border/70 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+        >
+          ✕
+        </button>
+        <div className="max-h-[70vh] overflow-y-auto pr-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Rechtliches</p>
+          <h2 className="mt-4 text-3xl leading-tight md:text-4xl">Datenschutzerklärung</h2>
+
+          <div className="mt-8 space-y-6 text-sm leading-relaxed text-muted-foreground">
+            <p>
+              In folgender Datenschutzerklärung informieren wir Sie über die wichtigsten Aspekte der
+              Datenverarbeitung im Rahmen unserer Webseite. Wir erheben und verarbeiten
+              personenbezogene Daten nur auf Grundlage der gesetzlichen Bestimmungen
+              (Datenschutzgrundverordnung, Telekommunikationsgesetz 2003).
+            </p>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Zugriffsdaten</h3>
+              <p>
+                Sobald Sie als Benutzer auf unsere Webseite zugreifen oder diese besuchen, wird Ihre
+                IP-Adresse sowie Beginn und Ende der Sitzung erfasst. Dies ist technisch bedingt und
+                stellt somit ein berechtigtes Interesse iSv Art 6 Abs 1 lit f DSGVO dar.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Kontakt mit uns</h3>
+              <p>
+                Wenn Sie uns entweder über unser Kontaktformular auf unserer Webseite oder per E-Mail
+                kontaktieren, dann werden die von Ihnen an uns übermittelten Daten zwecks Bearbeitung
+                Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs Monate bei uns
+                gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe Ihrer übermittelten
+                Daten.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Datenspeicherung</h3>
+              <p>
+                Im Rahmen der Erleichterung des Einkaufsvorganges und zur späteren Vertragsabwicklung
+                werden vom Webshop-Betreiber im Rahmen von Cookies die IP-Adresse des Anschlussinhabers
+                gespeichert.
+              </p>
+              <p>
+                Die von Ihnen bereitgestellten Daten sind für die Vertragserfüllung und zur Durchführung
+                vorvertraglicher Maßnahmen erforderlich. Ein Vertragsabschluss ohne dieser Daten ist
+                nicht möglich. Eine Übermittlung der erhobenen Daten an Dritte erfolgt nicht, mit Ausnahme
+                der Übermittlung von Zahlungsdaten an die abwickelnden Bankinstitute/Zahlungsdienstleister
+                zum Zwecke der Abbuchung des Einkaufspreises, an das von uns beauftragte
+                Versandunternehmen, welches mit der Zustellung der Ware beauftragt ist, und unseren
+                Steuerberater zur Erfüllung unserer steuerrechtlichen Verpflichtungen.
+              </p>
+              <p>
+                Sollten Sie den Einkaufsvorgang abbrechen, werden diese bei uns gespeicherten Daten
+                gelöscht. Sollte ein Vertragsabschluss zustande kommen, werden sämtliche Daten,
+                resultierend aus dem Vertragsverhältnis, bis zum Ablauf der steuerrechtlichen
+                Aufbewahrungsfrist (7 Jahre) gespeichert. Der übermittelte Name, die Anschrift, gekaufte
+                Waren und Kaufdatum werden darüber hinaus bis zum Ablauf der Produkthaftung (10 Jahre)
+                gespeichert. Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des §
+                96 Abs 3 TKG sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit b (notwendig zur
+                Vertragserfüllung) der DSGVO.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Cookies</h3>
+              <p>
+                Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien,
+                die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden
+                an. Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich zu gestalten. Einige Cookies
+                bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns,
+                Ihren Browser beim nächsten Besuch wiederzuerkennen. Wenn Sie dies nicht wünschen, so
+                können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert
+                und Sie dies nur im Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die
+                Funktionalität unserer Website eingeschränkt sein.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Google Maps</h3>
+              <p>
+                Unsere Website verwendet Funktionen des Webkartendienstes „Google Maps“. Der
+                Dienstanbieter dieser Funktion ist:
+              </p>
+              <p className="mt-2">
+                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland<br />
+                Tel: +353 1 543 1000
+              </p>
+              <p>
+                Im Zuge der Nutzung von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern und zu
+                verarbeiten. Google überträgt in der Regel an einen Server in den USA und speichert die Daten
+                dort. Die Verarbeitung geschieht durch den Diensteanbieter (oben genannt), der Betreiber
+                dieser Homepage hat keinen Einfluss auf die Übertragung der Daten.
+              </p>
+              <p>
+                Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des § 96 Abs 3 TKG
+                sowie des Art 6 Abs 1 lit f (berechtigtes Interesse) der DSGVO. Die Nutzung von Google Maps
+                erhöht die Auffindbarkeit der Orte, welche auf unserer Webseite bereitgestellt werden.
+              </p>
+              <p>
+                Weitere Informationen über den Umgang mit Nutzerdaten des Dienstebieters „Google“ können
+                Sie der Datenschutzerklärung entnehmen:{" "}
+                <a
+                  href="https://policies.google.com/privacy?hl=de"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  https://policies.google.com/privacy?hl=de
+                </a>
+              </p>
+              <p>
+                Google verarbeitet die Daten auch in den USA, hat sich jedoch dem EU-US Privacy-Shield
+                unterworfen:{" "}
+                <a
+                  href="https://www.privacyshield.gov/EU-US-Framework"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  https://www.privacyshield.gov/EU-US-Framework
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Google Fonts</h3>
+              <p>
+                Unsere Website verwendet Schriftarten von „Google Fonts“. Der Dienstanbieter dieser
+                Funktion ist:
+              </p>
+              <p className="mt-2">
+                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland<br />
+                Tel: +353 1 543 1000
+              </p>
+              <p>
+                Beim Aufrufen dieser Webseite lädt Ihr Browser Schriftarten und speichert diese in den
+                Cache. Da Sie als Besucher der Webseite Daten des Diensteanbieters empfangen, kann Google
+                unter Umständen Cookies auf Ihrem Rechner setzen oder analysieren.
+              </p>
+              <p>
+                Die Nutzung von „Google Fonts“ dient der Optimierung unserer Dienstleistung und der
+                einheitlichen Darstellung von Inhalten. Dies stellt ein berechtigtes Interesse im Sinne von
+                Art. 6 Abs. 1 lit. f DSGVO dar.
+              </p>
+              <p>
+                Weitere Informationen zu Google Fonts erhalten Sie unter:{" "}
+                <a
+                  href="https://developers.google.com/fonts/faq"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  https://developers.google.com/fonts/faq
+                </a>
+                <br />
+                Weitere Informationen über den Umgang mit Nutzerdaten von Google:{" "}
+                <a
+                  href="https://policies.google.com/privacy?hl=de"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  https://policies.google.com/privacy?hl=de
+                </a>
+              </p>
+              <p>
+                Google verarbeitet die Daten auch in den USA, hat sich jedoch dem EU-US Privacy-Shield
+                unterworfen:{" "}
+                <a
+                  href="https://www.privacyshield.gov/EU-US-Framework"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-2"
+                >
+                  https://www.privacyshield.gov/EU-US-Framework
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Server-Log Files</h3>
+              <p>
+                Diese Webseite und der damit verbundene Provider erhebt im Zuge der Webseitennutzung
+                automatisch Informationen im Rahmen sogenannter „Server-Log Files“. Dies betrifft
+                insbesondere:
+              </p>
+              <ul className="my-3 list-disc space-y-1 pl-5">
+                <li>IP-Adresse oder Hostname</li>
+                <li>den verwendeten Browser</li>
+                <li>Aufenthaltsdauer auf der Webseite sowie Datum und Uhrzeit</li>
+                <li>aufgerufene Seiten der Webseite</li>
+                <li>Spracheinstellungen und Betriebssystem</li>
+                <li>„Leaving-Page“ (auf welcher URL hat der Benutzer die Webseite verlassen)</li>
+                <li>ISP (Internet Service Provider)</li>
+              </ul>
+              <p>
+                Diese erhobenen Informationen werden nicht personenbezogen verarbeitet oder mit
+                personenbezogenen Daten in Verbindung gebracht.
+              </p>
+              <p>
+                Der Webseitenbetreiber behält es sich vor, im Falle von Bekanntwerden rechtswidriger
+                Tätigkeiten, diese Daten auszuwerten oder zu überprüfen.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="mb-2 text-base font-medium text-foreground">Ihre Rechte als Betroffener</h3>
+              <p>
+                Sie als Betroffener haben bezüglich Ihrer Daten, welche bei uns gespeichert sind,
+                grundsätzlich ein Recht auf:
+              </p>
+              <ul className="my-3 list-disc space-y-1 pl-5">
+                <li>Auskunft</li>
+                <li>Löschung der Daten</li>
+                <li>Berichtigung der Daten</li>
+                <li>Übertragbarkeit der Daten</li>
+                <li>Widerruf und Widerspruch zur Datenverarbeitung</li>
+                <li>Einschränkung</li>
+              </ul>
+              <p>
+                Wenn Sie vermuten, dass im Zuge der Verarbeitung Ihrer Daten Verstöße gegen das
+                Datenschutzrecht passiert sind, so haben Sie die Möglichkeit, sich bei uns ({" "}
+                <a href={`mailto:${contact.email}`} className="text-primary underline underline-offset-2">
+                  {contact.email}
+                </a>
+                ) oder der Datenschutzbehörde zu beschweren.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-primary/15 bg-secondary p-5 text-foreground">
+              <h3 className="mb-2 text-base font-medium">Kontaktdaten</h3>
+              <p>Webseitenbetreiber: Michaela Seiß</p>
+              <p>
+                Telefonnummer:{" "}
+                <a href={contact.phoneHref} className="text-primary underline underline-offset-2">
+                  {contact.phone}
+                </a>
+              </p>
+              <p>
+                E-Mail:{" "}
+                <a href={`mailto:${contact.email}`} className="text-primary underline underline-offset-2">
+                  {contact.email}
+                </a>
+              </p>
+            </div>
+
+            <p className="text-xs text-muted-foreground">
+              Rechtstext von Quelle: fairesRecht.at in Kooperation mit Rechtsanwalt für Scheidung
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function CallbackForm() {
   const [email, setEmail] = useState("");
@@ -121,6 +409,8 @@ function CallbackForm() {
 }
 
 function Index() {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
   return (
     <main className="surface-sky overflow-x-hidden">
       {/* Header */}
@@ -569,15 +859,26 @@ function Index() {
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Michaela Seiß
             </p>
-            <a
-              href="#impressum"
-              className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
-            >
-              Impressum
-            </a>
+            <div className="flex flex-wrap justify-center gap-2">
+              <a
+                href="#impressum"
+                className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+              >
+                Impressum
+              </a>
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(true)}
+                className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+              >
+                Datenschutzerklärung
+              </button>
+            </div>
           </div>
         </div>
       </footer>
+
+      <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </main>
   );
 }
