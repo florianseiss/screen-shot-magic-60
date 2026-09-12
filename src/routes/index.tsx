@@ -409,6 +409,8 @@ function CallbackForm() {
 }
 
 function Index() {
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+
   return (
     <main className="surface-sky overflow-x-hidden">
       {/* Header */}
@@ -857,12 +859,21 @@ function Index() {
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Michaela Seiß
             </p>
-            <a
-              href="#impressum"
-              className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
-            >
-              Impressum
-            </a>
+            <div className="flex flex-wrap justify-center gap-2">
+              <a
+                href="#impressum"
+                className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+              >
+                Impressum
+              </a>
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(true)}
+                className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+              >
+                Datenschutzerklärung
+              </button>
+            </div>
           </div>
         </div>
       </footer>
