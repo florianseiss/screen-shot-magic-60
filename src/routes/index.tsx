@@ -877,6 +877,8 @@ function Index() {
           </div>
         </div>
       </footer>
+
+      <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </main>
   );
 }
