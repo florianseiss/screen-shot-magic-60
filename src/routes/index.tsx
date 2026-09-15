@@ -762,25 +762,7 @@ function Index() {
             },
           ].map((m, i) => (
             <Reveal key={m.name} delay={i * 140}>
-              <div className="overflow-hidden rounded-[2rem] border border-border/70 bg-card shadow-card">
-                <iframe
-                  title={`Karte ${m.name}`}
-                  src={m.src}
-                  loading="lazy"
-                  className="h-72 w-full border-0"
-                />
-                <div className="flex items-center justify-between gap-4 px-6 py-4">
-                  <p className="text-sm font-medium">{m.name}</p>
-                  <a
-                    href={m.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs uppercase tracking-widest text-primary transition hover:brightness-110"
-                  >
-                    Größere Karte
-                  </a>
-                </div>
-              </div>
+              <MapEmbed name={m.name} src={m.src} link={m.link} />
             </Reveal>
           ))}
         </div>
