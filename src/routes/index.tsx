@@ -264,14 +264,11 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Tel: +353 1 543 1000
               </p>
               <p>
-                Beim Aufrufen dieser Webseite lädt Ihr Browser Schriftarten und speichert diese in den
-                Cache. Da Sie als Besucher der Webseite Daten des Diensteanbieters empfangen, kann Google
-                unter Umständen Cookies auf Ihrem Rechner setzen oder analysieren.
-              </p>
-              <p>
-                Die Nutzung von „Google Fonts“ dient der Optimierung unserer Dienstleistung und der
-                einheitlichen Darstellung von Inhalten. Dies stellt ein berechtigtes Interesse im Sinne von
-                Art. 6 Abs. 1 lit. f DSGVO dar.
+                Die verwendeten Schriftarten („Cormorant Garamond“ und „Karla“) werden{" "}
+                <strong>lokal auf unserem Server gehostet</strong> und direkt von dieser Webseite
+                geladen. Dadurch besteht beim Laden der Schriftarten keine Verbindung zu Servern von
+                Google, es werden keine Daten (insbesondere keine IP-Adresse) an Google übertragen und
+                es ist auch keine Einwilligung dafür erforderlich.
               </p>
               <p>
                 Weitere Informationen zu Google Fonts erhalten Sie unter:{" "}
@@ -282,28 +279,6 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                   className="text-primary underline underline-offset-2"
                 >
                   https://developers.google.com/fonts/faq
-                </a>
-                <br />
-                Weitere Informationen über den Umgang mit Nutzerdaten von Google:{" "}
-                <a
-                  href="https://policies.google.com/privacy?hl=de"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary underline underline-offset-2"
-                >
-                  https://policies.google.com/privacy?hl=de
-                </a>
-              </p>
-              <p>
-                Google verarbeitet die Daten auch in den USA, hat sich jedoch dem EU-US Privacy-Shield
-                unterworfen:{" "}
-                <a
-                  href="https://www.privacyshield.gov/EU-US-Framework"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary underline underline-offset-2"
-                >
-                  https://www.privacyshield.gov/EU-US-Framework
                 </a>
               </p>
             </div>
