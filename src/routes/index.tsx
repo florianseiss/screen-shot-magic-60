@@ -818,7 +818,9 @@ function IndexContent() {
 
 
       {/* Footer */}
-      <footer className="border-t border-border/70 px-6 py-14">
+      <footer
+        className={`border-t border-border/70 px-6 py-14 ${consent === null ? "pb-72 md:pb-64" : ""}`}
+      >
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl">Michaela Seiß</p>
