@@ -838,6 +838,13 @@ function Index() {
               >
                 Datenschutzerklärung
               </button>
+              <button
+                type="button"
+                onClick={openSettings}
+                className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+              >
+                Cookie-Einstellungen
+              </button>
             </div>
           </div>
         </div>
