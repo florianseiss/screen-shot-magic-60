@@ -392,7 +392,16 @@ function CallbackForm() {
 }
 
 function Index() {
+  return (
+    <ConsentProvider>
+      <IndexContent />
+    </ConsentProvider>
+  );
+}
+
+function IndexContent() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const { consent, openSettings } = useConsent();
 
   return (
     <main className="surface-sky overflow-x-hidden">
