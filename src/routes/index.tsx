@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
+import { ConsentProvider, useConsent } from "@/components/CookieConsent";
+import { MapEmbed } from "@/components/MapEmbed";
 import heroImg from "@/assets/hero-breath.jpg";
 import portraitAsset from "@/assets/michaela-portrait.png.asset.json";
 import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
