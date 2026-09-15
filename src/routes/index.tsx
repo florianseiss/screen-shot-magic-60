@@ -240,15 +240,15 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 </a>
               </p>
               <p>
-                Google verarbeitet die Daten auch in den USA, hat sich jedoch dem EU-US Privacy-Shield
-                unterworfen:{" "}
+                Google verarbeitet die Daten auch in den USA, ist jedoch nach dem EU-US Data Privacy
+                Framework (DPF) zertifiziert:{" "}
                 <a
-                  href="https://www.privacyshield.gov/EU-US-Framework"
+                  href="https://www.dataprivacyframework.gov/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-primary underline underline-offset-2"
                 >
-                  https://www.privacyshield.gov/EU-US-Framework
+                  https://www.dataprivacyframework.gov/
                 </a>
               </p>
             </div>
