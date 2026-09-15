@@ -181,7 +181,7 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Aufbewahrungsfrist (7 Jahre) gespeichert. Der übermittelte Name, die Anschrift, gekaufte
                 Waren und Kaufdatum werden darüber hinaus bis zum Ablauf der Produkthaftung (10 Jahre)
                 gespeichert. Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des §
-                96 Abs 3 TKG sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit b (notwendig zur
+                165 Abs 3 TKG 2021 sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit b (notwendig zur
                 Vertragserfüllung) der DSGVO.
               </p>
             </div>
