@@ -217,9 +217,15 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 dieser Homepage hat keinen Einfluss auf die Übertragung der Daten.
               </p>
               <p>
-                Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des § 96 Abs 3 TKG
-                sowie des Art 6 Abs 1 lit f (berechtigtes Interesse) der DSGVO. Die Nutzung von Google Maps
-                erhöht die Auffindbarkeit der Orte, welche auf unserer Webseite bereitgestellt werden.
+                Die Kartendarstellung wird auf dieser Webseite <strong>nicht automatisch</strong> geladen.
+                Stattdessen sehen Sie zunächst einen Platzhalter; erst wenn Sie aktiv auf „Karte laden“
+                klicken oder die Kategorie „Externe Inhalte“ in den Cookie-Einstellungen akzeptieren, wird
+                die Karte eingebunden und eine Verbindung zum Anbieter hergestellt.
+              </p>
+              <p>
+                Die Datenverarbeitung erfolgt daher ausschließlich auf Basis Ihrer Einwilligung gemäß
+                Art. 6 Abs. 1 lit. a DSGVO sowie § 165 Abs 3 TKG 2021. Sie können Ihre Einwilligung
+                jederzeit über den Link „Cookie-Einstellungen“ im Fußbereich der Webseite widerrufen.
               </p>
               <p>
                 Weitere Informationen über den Umgang mit Nutzerdaten des Dienstebieters „Google“ können
