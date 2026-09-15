@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
+import { ConsentProvider, useConsent } from "@/components/CookieConsent";
+import { MapEmbed } from "@/components/MapEmbed";
 import heroImg from "@/assets/hero-breath.jpg";
 import portraitAsset from "@/assets/michaela-portrait.png.asset.json";
 import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
@@ -179,7 +181,7 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Aufbewahrungsfrist (7 Jahre) gespeichert. Der übermittelte Name, die Anschrift, gekaufte
                 Waren und Kaufdatum werden darüber hinaus bis zum Ablauf der Produkthaftung (10 Jahre)
                 gespeichert. Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des §
-                96 Abs 3 TKG sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit b (notwendig zur
+                165 Abs 3 TKG 2021 sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit b (notwendig zur
                 Vertragserfüllung) der DSGVO.
               </p>
             </div>
@@ -215,9 +217,15 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 dieser Homepage hat keinen Einfluss auf die Übertragung der Daten.
               </p>
               <p>
-                Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des § 96 Abs 3 TKG
-                sowie des Art 6 Abs 1 lit f (berechtigtes Interesse) der DSGVO. Die Nutzung von Google Maps
-                erhöht die Auffindbarkeit der Orte, welche auf unserer Webseite bereitgestellt werden.
+                Die Kartendarstellung wird auf dieser Webseite <strong>nicht automatisch</strong> geladen.
+                Stattdessen sehen Sie zunächst einen Platzhalter; erst wenn Sie aktiv auf „Karte laden“
+                klicken oder die Kategorie „Externe Inhalte“ in den Cookie-Einstellungen akzeptieren, wird
+                die Karte eingebunden und eine Verbindung zum Anbieter hergestellt.
+              </p>
+              <p>
+                Die Datenverarbeitung erfolgt daher ausschließlich auf Basis Ihrer Einwilligung gemäß
+                Art. 6 Abs. 1 lit. a DSGVO sowie § 165 Abs 3 TKG 2021. Sie können Ihre Einwilligung
+                jederzeit über den Link „Cookie-Einstellungen“ im Fußbereich der Webseite widerrufen.
               </p>
               <p>
                 Weitere Informationen über den Umgang mit Nutzerdaten des Dienstebieters „Google“ können
@@ -232,15 +240,15 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 </a>
               </p>
               <p>
-                Google verarbeitet die Daten auch in den USA, hat sich jedoch dem EU-US Privacy-Shield
-                unterworfen:{" "}
+                Google verarbeitet die Daten auch in den USA, ist jedoch nach dem EU-US Data Privacy
+                Framework (DPF) zertifiziert:{" "}
                 <a
-                  href="https://www.privacyshield.gov/EU-US-Framework"
+                  href="https://www.dataprivacyframework.gov/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-primary underline underline-offset-2"
                 >
-                  https://www.privacyshield.gov/EU-US-Framework
+                  https://www.dataprivacyframework.gov/
                 </a>
               </p>
             </div>
@@ -256,14 +264,11 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Tel: +353 1 543 1000
               </p>
               <p>
-                Beim Aufrufen dieser Webseite lädt Ihr Browser Schriftarten und speichert diese in den
-                Cache. Da Sie als Besucher der Webseite Daten des Diensteanbieters empfangen, kann Google
-                unter Umständen Cookies auf Ihrem Rechner setzen oder analysieren.
-              </p>
-              <p>
-                Die Nutzung von „Google Fonts“ dient der Optimierung unserer Dienstleistung und der
-                einheitlichen Darstellung von Inhalten. Dies stellt ein berechtigtes Interesse im Sinne von
-                Art. 6 Abs. 1 lit. f DSGVO dar.
+                Die verwendeten Schriftarten („Cormorant Garamond“ und „Karla“) werden{" "}
+                <strong>lokal auf unserem Server gehostet</strong> und direkt von dieser Webseite
+                geladen. Dadurch besteht beim Laden der Schriftarten keine Verbindung zu Servern von
+                Google, es werden keine Daten (insbesondere keine IP-Adresse) an Google übertragen und
+                es ist auch keine Einwilligung dafür erforderlich.
               </p>
               <p>
                 Weitere Informationen zu Google Fonts erhalten Sie unter:{" "}
@@ -274,28 +279,6 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                   className="text-primary underline underline-offset-2"
                 >
                   https://developers.google.com/fonts/faq
-                </a>
-                <br />
-                Weitere Informationen über den Umgang mit Nutzerdaten von Google:{" "}
-                <a
-                  href="https://policies.google.com/privacy?hl=de"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary underline underline-offset-2"
-                >
-                  https://policies.google.com/privacy?hl=de
-                </a>
-              </p>
-              <p>
-                Google verarbeitet die Daten auch in den USA, hat sich jedoch dem EU-US Privacy-Shield
-                unterworfen:{" "}
-                <a
-                  href="https://www.privacyshield.gov/EU-US-Framework"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary underline underline-offset-2"
-                >
-                  https://www.privacyshield.gov/EU-US-Framework
                 </a>
               </p>
             </div>
@@ -409,7 +392,16 @@ function CallbackForm() {
 }
 
 function Index() {
+  return (
+    <ConsentProvider>
+      <IndexContent />
+    </ConsentProvider>
+  );
+}
+
+function IndexContent() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const { consent, openSettings } = useConsent();
 
   return (
     <main className="surface-sky overflow-x-hidden">
@@ -779,25 +771,7 @@ function Index() {
             },
           ].map((m, i) => (
             <Reveal key={m.name} delay={i * 140}>
-              <div className="overflow-hidden rounded-[2rem] border border-border/70 bg-card shadow-card">
-                <iframe
-                  title={`Karte ${m.name}`}
-                  src={m.src}
-                  loading="lazy"
-                  className="h-72 w-full border-0"
-                />
-                <div className="flex items-center justify-between gap-4 px-6 py-4">
-                  <p className="text-sm font-medium">{m.name}</p>
-                  <a
-                    href={m.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-xs uppercase tracking-widest text-primary transition hover:brightness-110"
-                  >
-                    Größere Karte
-                  </a>
-                </div>
-              </div>
+              <MapEmbed name={m.name} src={m.src} link={m.link} />
             </Reveal>
           ))}
         </div>
@@ -844,7 +818,9 @@ function Index() {
 
 
       {/* Footer */}
-      <footer className="border-t border-border/70 px-6 py-14">
+      <footer
+        className={`border-t border-border/70 px-6 py-14 ${consent === null ? "pb-72 md:pb-64" : ""}`}
+      >
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           <div>
             <p className="font-display text-2xl">Michaela Seiß</p>
@@ -872,6 +848,13 @@ function Index() {
                 className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
               >
                 Datenschutzerklärung
+              </button>
+              <button
+                type="button"
+                onClick={openSettings}
+                className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
+              >
+                Cookie-Einstellungen
               </button>
             </div>
           </div>
