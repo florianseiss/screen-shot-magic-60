@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { ConsentProvider, useConsent } from "@/components/CookieConsent";
 import { MapEmbed } from "@/components/MapEmbed";
-import heroImg from "@/assets/hero-breath.jpg";
+import groundAsset from "@/assets/ground-breath.jpg.asset.json";
 import portraitAsset from "@/assets/michaela-portrait.png.asset.json";
 import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
 import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
@@ -447,13 +447,13 @@ function IndexContent() {
       {/* Hero */}
       <section className="relative min-h-[92vh] overflow-hidden pt-20">
         <img
-          src={heroImg}
-          alt="Frau atmet mit geschlossenen Augen in einer sonnigen steirischen Landschaft"
+          src={groundAsset.url}
+          alt="Michaela Seiß liegt im Laub, eine Hand auf der Brust, die andere auf dem Bauch"
           width={1600}
-          height={1200}
-          className="absolute inset-0 h-full w-full object-cover object-[60%_center]"
+          height={1208}
+          className="absolute inset-0 h-full w-full object-cover object-center grayscale-[35%] brightness-[1.05] contrast-[0.94]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/75 to-background/35" />
         <div
           aria-hidden
           className="breathe absolute -left-24 top-1/4 h-[26rem] w-[26rem] rounded-full bg-sky/40 blur-3xl"
@@ -825,7 +825,7 @@ function IndexContent() {
           <div>
             <p className="font-display text-2xl">Michaela Seiß</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              Breathwork · Weiz &amp; Eggersdorf, Steiermark
+              Breathwork aus Eggersdorf, Steiermark
             </p>
           </div>
           <p className="max-w-xs text-sm text-muted-foreground">
