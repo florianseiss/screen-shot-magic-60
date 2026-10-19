@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { ConsentProvider, useConsent } from "@/components/CookieConsent";
 import { MapEmbed } from "@/components/MapEmbed";
 import groundAsset from "@/assets/ground-breath.jpg.asset.json";
-import portraitAsset from "@/assets/michaela-portrait.png.asset.json";
+import portraitAsset from "@/assets/michaela-portrait.jpg.asset.json";
 import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
 import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
 import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
@@ -69,24 +69,51 @@ const contact = {
   email: "office@transland.at",
 };
 
-const dates = [
+type Appointment = {
+  date: string;
+  time?: string;
+  place: string;
+  type: string;
+};
+
+const dates: Appointment[] = [
   {
-    date: "Sa, 27. September 2026",
-    time: "10:00 – 12:00",
-    place: "Weiz",
-    type: "Conscious Connected Breathwork · Gruppe",
+    date: "Do, 22. Oktober 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Conscious Connected Breathwork (CCB)",
   },
   {
-    date: "Fr, 10. Oktober 2026",
-    time: "18:30 – 20:00",
-    place: "Eggersdorf bei Graz",
-    type: "Slow Breath · Abendsession",
+    date: "So, 25. Oktober 2026",
+    time: "19:00 – 20:30",
+    place: "Eggersdorf",
+    type: "Conscious Connected Breathwork (CCB)",
   },
   {
-    date: "Sa, 25. Oktober 2026",
-    time: "09:30 – 11:00",
-    place: "Ilz",
-    type: "1:1 Arbeit · Einzeltermin",
+    date: "Do, 12. November 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Breath Flow",
+  },
+  {
+    date: "So, 22. November 2026",
+    time: "19:00 – 20:30",
+    place: "Eggersdorf",
+    type: "Slow Breath",
+  },
+  {
+    date: "Do, 3. Dezember 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Conscious Connected Breathwork (CCB)",
+  },
+  {
+    date: "Do, 17. Dezember 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Slow Breath",
+  },
+  {
+    date: "So, 20. Dezember 2026",
+    time: "19:00 – 20:30",
+    place: "Eggersdorf",
+    type: "Conscious Connected Breathwork (CCB)",
   },
 ];
 
@@ -360,36 +387,6 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
   );
 }
 
-function CallbackForm() {
-  const [email, setEmail] = useState("");
-
-  return (
-    <form
-      className="mt-6 flex flex-col gap-3 rounded-[2rem] border border-border/70 bg-card p-6 text-left shadow-card sm:flex-row sm:items-center md:p-7"
-      onSubmit={(e) => {
-        e.preventDefault();
-        window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
-          "Bitte um Rückruf",
-        )}&body=${encodeURIComponent(`Bitte ruf mich zurück. Meine E-Mail: ${email}`)}`;
-      }}
-    >
-      <input
-        required
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Deine E-Mail für einen Rückruf"
-        className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-      />
-      <button
-        type="submit"
-        className="shrink-0 rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
-      >
-        Rückruf
-      </button>
-    </form>
-  );
-}
 
 function Index() {
   return (
@@ -504,11 +501,11 @@ function IndexContent() {
               />
               <img
                 src={portraitAsset.url}
-                alt="Michaela Seiß, zertifizierte Breathwork-Trainerin, lächelt in die Kamera"
+                alt="Michaela Seiß, zertifizierte Breathwork-Trainerin, im Sonnenlicht vor grünen Blättern"
                 width={1200}
-                height={1200}
+                height={1600}
                 loading="lazy"
-                className="relative aspect-square w-full rounded-[3rem] object-cover shadow-card"
+                className="relative aspect-[4/5] w-full rounded-[3rem] object-cover object-top shadow-card"
               />
             </div>
           </Reveal>
