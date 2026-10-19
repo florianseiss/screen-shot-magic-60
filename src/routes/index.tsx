@@ -563,6 +563,7 @@ function Index() {
 
 function IndexContent() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [impressumOpen, setImpressumOpen] = useState(false);
   const { consent, openSettings } = useConsent();
 
   return (
@@ -1014,12 +1015,13 @@ function IndexContent() {
               © {new Date().getFullYear()} Michaela Seiß
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              <a
-                href="#impressum"
+              <button
+                type="button"
+                onClick={() => setImpressumOpen(true)}
                 className="rounded-full border border-primary/20 px-5 py-2 text-xs font-medium text-muted-foreground transition hover:bg-secondary"
               >
                 Impressum
-              </a>
+              </button>
               <button
                 type="button"
                 onClick={() => setPrivacyOpen(true)}
@@ -1039,6 +1041,7 @@ function IndexContent() {
         </div>
       </footer>
 
+      <ImpressumModal open={impressumOpen} onClose={() => setImpressumOpen(false)} />
       <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </main>
   );
