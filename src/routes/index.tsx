@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { ConsentProvider, useConsent } from "@/components/CookieConsent";
 import { MapEmbed } from "@/components/MapEmbed";
 import groundAsset from "@/assets/ground-breath.jpg.asset.json";
-import portraitAsset from "@/assets/michaela-portrait.png.asset.json";
+import portraitAsset from "@/assets/michaela-portrait.jpg.asset.json";
 import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
 import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
 import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
@@ -69,27 +69,53 @@ const contact = {
   email: "office@transland.at",
 };
 
-const dates = [
+type Appointment = {
+  date: string;
+  time?: string;
+  place: string;
+  type: string;
+};
+
+const dates: Appointment[] = [
   {
-    date: "Sa, 27. September 2026",
-    time: "10:00 – 12:00",
-    place: "Weiz",
-    type: "Conscious Connected Breathwork · Gruppe",
+    date: "Do, 22. Oktober 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Conscious Connected Breathwork (CCB)",
   },
   {
-    date: "Fr, 10. Oktober 2026",
-    time: "18:30 – 20:00",
-    place: "Eggersdorf bei Graz",
-    type: "Slow Breath · Abendsession",
+    date: "So, 25. Oktober 2026",
+    time: "19:00 – 20:30",
+    place: "Eggersdorf",
+    type: "Conscious Connected Breathwork (CCB)",
   },
   {
-    date: "Sa, 25. Oktober 2026",
-    time: "09:30 – 11:00",
-    place: "Ilz",
-    type: "1:1 Arbeit · Einzeltermin",
+    date: "Do, 12. November 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Breath Flow",
+  },
+  {
+    date: "So, 22. November 2026",
+    time: "19:00 – 20:30",
+    place: "Eggersdorf",
+    type: "Slow Breath",
+  },
+  {
+    date: "Do, 3. Dezember 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Conscious Connected Breathwork (CCB)",
+  },
+  {
+    date: "Do, 17. Dezember 2026",
+    place: "Yogastudio Bewusst:Sein, Weiz",
+    type: "Slow Breath",
+  },
+  {
+    date: "So, 20. Dezember 2026",
+    time: "19:00 – 20:30",
+    place: "Eggersdorf",
+    type: "Conscious Connected Breathwork (CCB)",
   },
 ];
-
 
 function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   useEffect(() => {
@@ -150,53 +176,55 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
             <div>
               <h3 className="mb-2 text-base font-medium text-foreground">Kontakt mit uns</h3>
               <p>
-                Wenn Sie uns entweder über unser Kontaktformular auf unserer Webseite oder per E-Mail
-                kontaktieren, dann werden die von Ihnen an uns übermittelten Daten zwecks Bearbeitung
-                Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs Monate bei uns
-                gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe Ihrer übermittelten
-                Daten.
+                Wenn Sie uns entweder über unser Kontaktformular auf unserer Webseite oder per
+                E-Mail kontaktieren, dann werden die von Ihnen an uns übermittelten Daten zwecks
+                Bearbeitung Ihrer Anfrage oder für den Fall von weiteren Anschlussfragen für sechs
+                Monate bei uns gespeichert. Es erfolgt, ohne Ihre Einwilligung, keine Weitergabe
+                Ihrer übermittelten Daten.
               </p>
             </div>
 
             <div>
               <h3 className="mb-2 text-base font-medium text-foreground">Datenspeicherung</h3>
               <p>
-                Im Rahmen der Erleichterung des Einkaufsvorganges und zur späteren Vertragsabwicklung
-                werden vom Webshop-Betreiber im Rahmen von Cookies die IP-Adresse des Anschlussinhabers
-                gespeichert.
+                Im Rahmen der Erleichterung des Einkaufsvorganges und zur späteren
+                Vertragsabwicklung werden vom Webshop-Betreiber im Rahmen von Cookies die IP-Adresse
+                des Anschlussinhabers gespeichert.
               </p>
               <p>
-                Die von Ihnen bereitgestellten Daten sind für die Vertragserfüllung und zur Durchführung
-                vorvertraglicher Maßnahmen erforderlich. Ein Vertragsabschluss ohne dieser Daten ist
-                nicht möglich. Eine Übermittlung der erhobenen Daten an Dritte erfolgt nicht, mit Ausnahme
-                der Übermittlung von Zahlungsdaten an die abwickelnden Bankinstitute/Zahlungsdienstleister
-                zum Zwecke der Abbuchung des Einkaufspreises, an das von uns beauftragte
-                Versandunternehmen, welches mit der Zustellung der Ware beauftragt ist, und unseren
-                Steuerberater zur Erfüllung unserer steuerrechtlichen Verpflichtungen.
+                Die von Ihnen bereitgestellten Daten sind für die Vertragserfüllung und zur
+                Durchführung vorvertraglicher Maßnahmen erforderlich. Ein Vertragsabschluss ohne
+                dieser Daten ist nicht möglich. Eine Übermittlung der erhobenen Daten an Dritte
+                erfolgt nicht, mit Ausnahme der Übermittlung von Zahlungsdaten an die abwickelnden
+                Bankinstitute/Zahlungsdienstleister zum Zwecke der Abbuchung des Einkaufspreises, an
+                das von uns beauftragte Versandunternehmen, welches mit der Zustellung der Ware
+                beauftragt ist, und unseren Steuerberater zur Erfüllung unserer steuerrechtlichen
+                Verpflichtungen.
               </p>
               <p>
                 Sollten Sie den Einkaufsvorgang abbrechen, werden diese bei uns gespeicherten Daten
                 gelöscht. Sollte ein Vertragsabschluss zustande kommen, werden sämtliche Daten,
                 resultierend aus dem Vertragsverhältnis, bis zum Ablauf der steuerrechtlichen
-                Aufbewahrungsfrist (7 Jahre) gespeichert. Der übermittelte Name, die Anschrift, gekaufte
-                Waren und Kaufdatum werden darüber hinaus bis zum Ablauf der Produkthaftung (10 Jahre)
-                gespeichert. Die Datenverarbeitung erfolgt auf Basis der gesetzlichen Bestimmungen des §
-                165 Abs 3 TKG 2021 sowie des Art 6 Abs 1 lit a (Einwilligung) und/oder lit b (notwendig zur
-                Vertragserfüllung) der DSGVO.
+                Aufbewahrungsfrist (7 Jahre) gespeichert. Der übermittelte Name, die Anschrift,
+                gekaufte Waren und Kaufdatum werden darüber hinaus bis zum Ablauf der Produkthaftung
+                (10 Jahre) gespeichert. Die Datenverarbeitung erfolgt auf Basis der gesetzlichen
+                Bestimmungen des § 165 Abs 3 TKG 2021 sowie des Art 6 Abs 1 lit a (Einwilligung)
+                und/oder lit b (notwendig zur Vertragserfüllung) der DSGVO.
               </p>
             </div>
 
             <div>
               <h3 className="mb-2 text-base font-medium text-foreground">Cookies</h3>
               <p>
-                Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien,
-                die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden
-                an. Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich zu gestalten. Einige Cookies
-                bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es uns,
-                Ihren Browser beim nächsten Besuch wiederzuerkennen. Wenn Sie dies nicht wünschen, so
-                können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert
-                und Sie dies nur im Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die
-                Funktionalität unserer Website eingeschränkt sein.
+                Unsere Website verwendet so genannte Cookies. Dabei handelt es sich um kleine
+                Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie
+                richten keinen Schaden an. Wir nutzen Cookies dazu, unser Angebot nutzerfreundlich
+                zu gestalten. Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese
+                löschen. Sie ermöglichen es uns, Ihren Browser beim nächsten Besuch
+                wiederzuerkennen. Wenn Sie dies nicht wünschen, so können Sie Ihren Browser so
+                einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im
+                Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die Funktionalität
+                unserer Website eingeschränkt sein.
               </p>
             </div>
 
@@ -207,29 +235,33 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Dienstanbieter dieser Funktion ist:
               </p>
               <p className="mt-2">
-                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland<br />
+                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland
+                <br />
                 Tel: +353 1 543 1000
               </p>
               <p>
-                Im Zuge der Nutzung von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern und zu
-                verarbeiten. Google überträgt in der Regel an einen Server in den USA und speichert die Daten
-                dort. Die Verarbeitung geschieht durch den Diensteanbieter (oben genannt), der Betreiber
-                dieser Homepage hat keinen Einfluss auf die Übertragung der Daten.
+                Im Zuge der Nutzung von Google Maps ist es notwendig, Ihre IP-Adresse zu speichern
+                und zu verarbeiten. Google überträgt in der Regel an einen Server in den USA und
+                speichert die Daten dort. Die Verarbeitung geschieht durch den Diensteanbieter (oben
+                genannt), der Betreiber dieser Homepage hat keinen Einfluss auf die Übertragung der
+                Daten.
               </p>
               <p>
-                Die Kartendarstellung wird auf dieser Webseite <strong>nicht automatisch</strong> geladen.
-                Stattdessen sehen Sie zunächst einen Platzhalter; erst wenn Sie aktiv auf „Karte laden“
-                klicken oder die Kategorie „Externe Inhalte“ in den Cookie-Einstellungen akzeptieren, wird
-                die Karte eingebunden und eine Verbindung zum Anbieter hergestellt.
+                Die Kartendarstellung wird auf dieser Webseite <strong>nicht automatisch</strong>{" "}
+                geladen. Stattdessen sehen Sie zunächst einen Platzhalter; erst wenn Sie aktiv auf
+                „Karte laden“ klicken oder die Kategorie „Externe Inhalte“ in den
+                Cookie-Einstellungen akzeptieren, wird die Karte eingebunden und eine Verbindung zum
+                Anbieter hergestellt.
               </p>
               <p>
-                Die Datenverarbeitung erfolgt daher ausschließlich auf Basis Ihrer Einwilligung gemäß
-                Art. 6 Abs. 1 lit. a DSGVO sowie § 165 Abs 3 TKG 2021. Sie können Ihre Einwilligung
-                jederzeit über den Link „Cookie-Einstellungen“ im Fußbereich der Webseite widerrufen.
+                Die Datenverarbeitung erfolgt daher ausschließlich auf Basis Ihrer Einwilligung
+                gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 165 Abs 3 TKG 2021. Sie können Ihre
+                Einwilligung jederzeit über den Link „Cookie-Einstellungen“ im Fußbereich der
+                Webseite widerrufen.
               </p>
               <p>
-                Weitere Informationen über den Umgang mit Nutzerdaten des Dienstebieters „Google“ können
-                Sie der Datenschutzerklärung entnehmen:{" "}
+                Weitere Informationen über den Umgang mit Nutzerdaten des Dienstebieters „Google“
+                können Sie der Datenschutzerklärung entnehmen:{" "}
                 <a
                   href="https://policies.google.com/privacy?hl=de"
                   target="_blank"
@@ -260,15 +292,16 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
                 Funktion ist:
               </p>
               <p className="mt-2">
-                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland<br />
+                Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland
+                <br />
                 Tel: +353 1 543 1000
               </p>
               <p>
                 Die verwendeten Schriftarten („Cormorant Garamond“ und „Karla“) werden{" "}
                 <strong>lokal auf unserem Server gehostet</strong> und direkt von dieser Webseite
                 geladen. Dadurch besteht beim Laden der Schriftarten keine Verbindung zu Servern von
-                Google, es werden keine Daten (insbesondere keine IP-Adresse) an Google übertragen und
-                es ist auch keine Einwilligung dafür erforderlich.
+                Google, es werden keine Daten (insbesondere keine IP-Adresse) an Google übertragen
+                und es ist auch keine Einwilligung dafür erforderlich.
               </p>
               <p>
                 Weitere Informationen zu Google Fonts erhalten Sie unter:{" "}
@@ -310,7 +343,9 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
             </div>
 
             <div>
-              <h3 className="mb-2 text-base font-medium text-foreground">Ihre Rechte als Betroffener</h3>
+              <h3 className="mb-2 text-base font-medium text-foreground">
+                Ihre Rechte als Betroffener
+              </h3>
               <p>
                 Sie als Betroffener haben bezüglich Ihrer Daten, welche bei uns gespeichert sind,
                 grundsätzlich ein Recht auf:
@@ -326,7 +361,10 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
               <p>
                 Wenn Sie vermuten, dass im Zuge der Verarbeitung Ihrer Daten Verstöße gegen das
                 Datenschutzrecht passiert sind, so haben Sie die Möglichkeit, sich bei uns ({" "}
-                <a href={`mailto:${contact.email}`} className="text-primary underline underline-offset-2">
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="text-primary underline underline-offset-2"
+                >
                   {contact.email}
                 </a>
                 ) oder der Datenschutzbehörde zu beschweren.
@@ -344,7 +382,10 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
               </p>
               <p>
                 E-Mail:{" "}
-                <a href={`mailto:${contact.email}`} className="text-primary underline underline-offset-2">
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="text-primary underline underline-offset-2"
+                >
                   {contact.email}
                 </a>
               </p>
@@ -357,37 +398,6 @@ function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void })
         </div>
       </div>
     </div>
-  );
-}
-
-function CallbackForm() {
-  const [email, setEmail] = useState("");
-
-  return (
-    <form
-      className="mt-6 flex flex-col gap-3 rounded-[2rem] border border-border/70 bg-card p-6 text-left shadow-card sm:flex-row sm:items-center md:p-7"
-      onSubmit={(e) => {
-        e.preventDefault();
-        window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
-          "Bitte um Rückruf",
-        )}&body=${encodeURIComponent(`Bitte ruf mich zurück. Meine E-Mail: ${email}`)}`;
-      }}
-    >
-      <input
-        required
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Deine E-Mail für einen Rückruf"
-        className="w-full rounded-2xl border border-input bg-background px-5 py-4 text-sm outline-none transition focus:border-primary/50"
-      />
-      <button
-        type="submit"
-        className="shrink-0 rounded-full bg-primary px-8 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
-      >
-        Rückruf
-      </button>
-    </form>
   );
 }
 
@@ -469,9 +479,9 @@ function IndexContent() {
               Komm bei dir an.
             </h1>
             <p className="mt-7 max-w-md text-lg leading-relaxed text-muted-foreground">
-              Ich bin Michaela Seiß, zertifizierte Breathwork-Trainerin in der Steiermark. In ruhigen,
-              begleiteten Atemsessions findest du zurück in deinen Körper – zu echter Entspannung,
-              Klarheit und Kraft, die immer in dir verfügbar ist.
+              Ich bin Michaela Seiß, zertifizierte Breathwork-Trainerin in der Steiermark. In
+              ruhigen, begleiteten Atemsessions findest du zurück in deinen Körper – zu echter
+              Entspannung, Klarheit und Kraft, die immer in dir verfügbar ist.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <a
@@ -504,11 +514,11 @@ function IndexContent() {
               />
               <img
                 src={portraitAsset.url}
-                alt="Michaela Seiß, zertifizierte Breathwork-Trainerin, lächelt in die Kamera"
+                alt="Michaela Seiß, zertifizierte Breathwork-Trainerin, im Sonnenlicht vor grünen Blättern"
                 width={1200}
-                height={1200}
+                height={1600}
                 loading="lazy"
-                className="relative aspect-square w-full rounded-[3rem] object-cover shadow-card"
+                className="relative aspect-[4/5] w-full rounded-[3rem] object-cover object-top shadow-card"
               />
             </div>
           </Reveal>
@@ -525,13 +535,13 @@ function IndexContent() {
               </p>
               <p>
                 Für mich gehören ein gesunder Geist und ein gesunder Körper untrennbar zusammen. Der
-                Atem ist dabei ein kraftvolles Tool, das immer verfügbar ist – mit gezieltem Training
-                und der Aktivierung der richtigen Atemmuskulatur lässt sich Wohlbefinden nachhaltig
-                beeinflussen.
+                Atem ist dabei ein kraftvolles Tool, das immer verfügbar ist – mit gezieltem
+                Training und der Aktivierung der richtigen Atemmuskulatur lässt sich Wohlbefinden
+                nachhaltig beeinflussen.
               </p>
               <p>
-                Mein Herzenswunsch: Menschen die Kraft ihres eigenen Atems zeigen und sie auf dem Weg
-                zurück zu sich selbst begleiten.
+                Mein Herzenswunsch: Menschen die Kraft ihres eigenen Atems zeigen und sie auf dem
+                Weg zurück zu sich selbst begleiten.
               </p>
             </div>
           </Reveal>
@@ -577,7 +587,9 @@ function IndexContent() {
                   </span>
                   <p className="text-xs uppercase tracking-[0.3em] text-primary/60">{o.tag}</p>
                   <h3 className="mt-3 text-2xl leading-snug">{o.title}</h3>
-                  <p className="mt-4 text-[0.98rem] leading-relaxed text-muted-foreground">{o.text}</p>
+                  <p className="mt-4 text-[0.98rem] leading-relaxed text-muted-foreground">
+                    {o.text}
+                  </p>
                 </article>
               </Reveal>
             ))}
@@ -641,32 +653,51 @@ function IndexContent() {
             <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Termine</p>
             <h2 className="mt-5 text-4xl md:text-5xl">Nächste Termine</h2>
             <p className="mt-5 text-muted-foreground">
-              Die nächsten freien Einheiten – begrenzte Plätze, Anmeldung per Anruf oder E-Mail.
+              Die nächsten Einheiten in Weiz und Eggersdorf – begrenzte Plätze, Anmeldung notwendig.
             </p>
           </Reveal>
           <div className="mt-14 space-y-5">
             {dates.map((d, i) => (
-              <Reveal key={d.date} delay={i * 120}>
+              <Reveal key={d.date} delay={i * 90}>
                 <article className="flex flex-col gap-5 rounded-[2rem] border border-border/70 bg-card p-7 shadow-card transition hover:shadow-soft md:flex-row md:items-center md:justify-between md:p-8">
                   <div className="flex flex-col gap-1">
                     <p className="font-display text-2xl leading-snug text-primary">{d.date}</p>
                     <p className="text-sm text-muted-foreground">
-                      {d.time} · {d.place}
+                      {d.time ? `${d.time} · ${d.place}` : d.place}
                     </p>
                     <p className="mt-1 text-[0.95rem]">{d.type}</p>
                   </div>
                   <a
-                    href={`mailto:${contact.email}?subject=${encodeURIComponent(
-                      `Buchung: ${d.type} am ${d.date}`,
-                    )}`}
+                    href="#kontakt"
                     className="shrink-0 rounded-full bg-primary px-8 py-3.5 text-center text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
                   >
-                    Buchen
+                    Zum Kontakt
                   </a>
                 </article>
               </Reveal>
             ))}
           </div>
+          <Reveal delay={120}>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <p className="rounded-[1.5rem] border border-border/70 bg-secondary/40 px-6 py-5 text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">Eggersdorf:</span> sonntags 19:00 –
+                20:30, Beitrag €20, Anmeldung notwendig.
+              </p>
+              <p className="rounded-[1.5rem] border border-border/70 bg-secondary/40 px-6 py-5 text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">Weiz:</span> weitere Termine im
+                Stundenplan des Studios –{" "}
+                <a
+                  href="https://www.bewusstsein-studio.at/stundenplan"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-4"
+                >
+                  bewusstsein-studio.at/stundenplan
+                </a>
+                .
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -725,9 +756,9 @@ function IndexContent() {
               Sessions in Weiz, Eggersdorf und Ilz
             </h2>
             <p className="mt-6 text-[1.05rem] leading-relaxed text-muted-foreground">
-              Meine Breathwork-Einheiten finden in ruhigen Räumen in Weiz, in Eggersdorf bei Graz und
-              in Ilz statt – mitten in der Steiermark, umgeben von Natur. Einzelsessions und kleine
-              Gruppen nach Vereinbarung.
+              Meine Breathwork-Einheiten finden in ruhigen Räumen in Weiz, in Eggersdorf bei Graz
+              und in Ilz statt – mitten in der Steiermark, umgeben von Natur. Einzelsessions und
+              kleine Gruppen nach Vereinbarung.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {["Weiz", "Eggersdorf bei Graz", "Ilz", "Steiermark"].map((t) => (
@@ -788,8 +819,7 @@ function IndexContent() {
               Ruf mich an oder schreib mir
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-              Am schnellsten geht es direkt – telefonisch oder per E-Mail. Wenn du lieber
-              zurückgerufen wirst, lass einfach deine E-Mail-Adresse da.
+              Am schnellsten geht es direkt – ruf mich an oder schreib mir eine E-Mail.
             </p>
           </Reveal>
           <Reveal delay={120}>
@@ -805,17 +835,15 @@ function IndexContent() {
                 href={`mailto:${contact.email}`}
                 className="flex flex-col items-center gap-2 rounded-[2rem] border border-primary/15 bg-card px-8 py-9 shadow-card transition hover:-translate-y-1 hover:shadow-soft"
               >
-                <span className="text-xs uppercase tracking-[0.3em] text-primary/60">Schreiben</span>
+                <span className="text-xs uppercase tracking-[0.3em] text-primary/60">
+                  Schreiben
+                </span>
                 <span className="font-display text-2xl text-primary">{contact.email}</span>
               </a>
             </div>
           </Reveal>
-          <Reveal delay={200}>
-            <CallbackForm />
-          </Reveal>
         </div>
       </section>
-
 
       {/* Footer */}
       <footer
@@ -828,9 +856,7 @@ function IndexContent() {
               Breathwork aus Eggersdorf, Steiermark
             </p>
           </div>
-          <p className="max-w-xs text-sm text-muted-foreground">
-            Atme. Spüre. Komm bei dir an.
-          </p>
+          <p className="max-w-xs text-sm text-muted-foreground">Atme. Spüre. Komm bei dir an.</p>
           <div className="flex flex-col items-center gap-3 md:items-end">
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} Michaela Seiß
