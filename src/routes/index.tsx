@@ -117,6 +117,158 @@ const dates: Appointment[] = [
   },
 ];
 
+function ImpressumModal({ open, onClose }: { open: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Impressum"
+      className="fixed inset-0 z-[100] flex items-start justify-center bg-background/90 p-4 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative my-8 w-full max-w-3xl overflow-hidden rounded-[2.5rem] border border-border/70 bg-card p-8 shadow-soft md:p-12"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Schließen"
+          className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full border border-border/70 text-muted-foreground transition hover:bg-secondary hover:text-foreground"
+        >
+          ✕
+        </button>
+        <div className="max-h-[70vh] overflow-y-auto pr-2">
+          <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Rechtliches</p>
+          <h2 className="mt-4 text-3xl leading-tight md:text-4xl">Impressum</h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Informationen und Offenlegung gemäß §5 (1) ECG, § 25 MedienG, § 63 GewO und § 14 UGB
+          </p>
+
+          <div className="mt-8 space-y-6 text-sm leading-relaxed text-muted-foreground">
+            <div className="rounded-3xl border border-border/60 bg-secondary/40 p-6">
+              <p className="font-display text-xl text-foreground">Michaela Seiß</p>
+              <p className="mt-2">Waldhangstraße 23, 8063 Eggersdorf</p>
+              <p className="mt-1">UID-Nummer: ATU61837034</p>
+              <p className="mt-1">Berufsbezeichnung: Atemtrainer</p>
+              <p className="mt-3">
+                <a
+                  href="tel:+436604643406"
+                  className="text-primary underline underline-offset-4"
+                >
+                  0660 4643406
+                </a>
+                {" · "}
+                <a
+                  href="mailto:office@transland.at"
+                  className="text-primary underline underline-offset-4"
+                >
+                  office@transland.at
+                </a>
+              </p>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-primary/70">
+                  Gewerbeaufsichtsbehörde
+                </p>
+                <p className="mt-1">Bezirkshauptmannschaft Graz</p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-primary/70">
+                  Mitgliedschaften
+                </p>
+                <p className="mt-1">WKO Steiermark</p>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-[0.2em] text-primary/70">
+                  Anwendbare Rechtsvorschrift
+                </p>
+                <p className="mt-1">
+                  <a
+                    href="https://www.ris.bka.gv.at"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary underline underline-offset-4"
+                  >
+                    www.ris.bka.gv.at
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-foreground">Online-Streitbeilegung</p>
+              <p className="mt-2">
+                Verbraucher, welche in Österreich oder in einem sonstigen Vertragsstaat der ODR-VO
+                niedergelassen sind, haben die Möglichkeit Probleme bezüglich dem entgeltlichen Kauf
+                von Waren oder Dienstleistungen im Rahmen einer Online-Streitbeilegung (nach OS, AStG)
+                zu lösen. Die Europäische Kommission stellt eine Plattform hierfür bereit:{" "}
+                <a
+                  href="https://ec.europa.eu/consumers/odr"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-4"
+                >
+                  https://ec.europa.eu/consumers/odr
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <p className="text-foreground">Urheberrecht</p>
+              <p className="mt-2">
+                Die Inhalte dieser Webseite unterliegen, soweit dies rechtlich möglich ist, diversen
+                Schutzrechten (z.B dem Urheberrecht). Jegliche Verwendung/Verbreitung von
+                bereitgestelltem Material, welche urheberrechtlich untersagt ist, bedarf schriftlicher
+                Zustimmung des Webseitenbetreibers.
+              </p>
+            </div>
+
+            <div>
+              <p className="text-foreground">Haftungsausschluss</p>
+              <p className="mt-2">
+                Trotz sorgfältiger inhaltlicher Kontrolle übernimmt der Webseitenbetreiber dieser
+                Webseite keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten
+                Seiten sind ausschließlich deren Betreiber verantwortlich. Sollten Sie dennoch auf
+                ausgehende Links aufmerksam werden, welche auf eine Webseite mit rechtswidriger
+                Tätigkeit/Information verweisen, ersuchen wir um dementsprechenden Hinweis, um diese
+                nach § 17 Abs. 2 ECG umgehend zu entfernen.
+              </p>
+              <p className="mt-3">
+                Die Urheberrechte Dritter werden vom Betreiber dieser Webseite mit größter Sorgfalt
+                beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
+                bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden derartiger
+                Rechtsverletzungen werden wir den betroffenen Inhalt umgehend entfernen.
+              </p>
+            </div>
+
+            <p className="text-xs text-muted-foreground/70">
+              Rechtstext von Quelle: fairesRecht.at in Kooperation mit Rechtsanwalt bei
+              Behandlungsfehlern im Krankenhaus
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function PrivacyModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   useEffect(() => {
     if (!open) return;
