@@ -641,32 +641,52 @@ function IndexContent() {
             <p className="text-xs uppercase tracking-[0.35em] text-primary/70">Termine</p>
             <h2 className="mt-5 text-4xl md:text-5xl">Nächste Termine</h2>
             <p className="mt-5 text-muted-foreground">
-              Die nächsten freien Einheiten – begrenzte Plätze, Anmeldung per Anruf oder E-Mail.
+              Die nächsten Einheiten in Weiz und Eggersdorf – begrenzte Plätze, Anmeldung
+              notwendig.
             </p>
           </Reveal>
           <div className="mt-14 space-y-5">
             {dates.map((d, i) => (
-              <Reveal key={d.date} delay={i * 120}>
+              <Reveal key={d.date} delay={i * 90}>
                 <article className="flex flex-col gap-5 rounded-[2rem] border border-border/70 bg-card p-7 shadow-card transition hover:shadow-soft md:flex-row md:items-center md:justify-between md:p-8">
                   <div className="flex flex-col gap-1">
                     <p className="font-display text-2xl leading-snug text-primary">{d.date}</p>
                     <p className="text-sm text-muted-foreground">
-                      {d.time} · {d.place}
+                      {d.time ? `${d.time} · ${d.place}` : d.place}
                     </p>
                     <p className="mt-1 text-[0.95rem]">{d.type}</p>
                   </div>
                   <a
-                    href={`mailto:${contact.email}?subject=${encodeURIComponent(
-                      `Buchung: ${d.type} am ${d.date}`,
-                    )}`}
+                    href="#kontakt"
                     className="shrink-0 rounded-full bg-primary px-8 py-3.5 text-center text-sm font-medium uppercase tracking-widest text-primary-foreground shadow-soft transition hover:brightness-110"
                   >
-                    Buchen
+                    Zum Kontakt
                   </a>
                 </article>
               </Reveal>
             ))}
           </div>
+          <Reveal delay={120}>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <p className="rounded-[1.5rem] border border-border/70 bg-secondary/40 px-6 py-5 text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">Eggersdorf:</span> sonntags 19:00 –
+                20:30, Beitrag €20, Anmeldung notwendig.
+              </p>
+              <p className="rounded-[1.5rem] border border-border/70 bg-secondary/40 px-6 py-5 text-sm text-muted-foreground">
+                <span className="font-medium text-foreground">Weiz:</span> weitere Termine im
+                Stundenplan des Studios –{" "}
+                <a
+                  href="https://www.bewusstsein-studio.at/stundenplan"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary underline underline-offset-4"
+                >
+                  bewusstsein-studio.at/stundenplan
+                </a>
+                .
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -788,8 +808,7 @@ function IndexContent() {
               Ruf mich an oder schreib mir
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-              Am schnellsten geht es direkt – telefonisch oder per E-Mail. Wenn du lieber
-              zurückgerufen wirst, lass einfach deine E-Mail-Adresse da.
+              Am schnellsten geht es direkt – ruf mich an oder schreib mir eine E-Mail.
             </p>
           </Reveal>
           <Reveal delay={120}>
@@ -809,9 +828,6 @@ function IndexContent() {
                 <span className="font-display text-2xl text-primary">{contact.email}</span>
               </a>
             </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <CallbackForm />
           </Reveal>
         </div>
       </section>
