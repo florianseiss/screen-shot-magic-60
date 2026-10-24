@@ -3,14 +3,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { ConsentProvider, useConsent } from "@/components/CookieConsent";
 import { MapEmbed } from "@/components/MapEmbed";
-import groundAsset from "@/assets/ground-breath.jpg.asset.json";
-import portraitAsset from "@/assets/michaela-portrait.jpg.asset.json";
-import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
-import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
-import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
-import studioDetailAsset from "@/assets/studio-detail.jpg.asset.json";
-import gpbaBadge from "@/assets/gpba-badge.png.asset.json";
-import sevenDirectionsBadge from "@/assets/seven-directions-badge.png.asset.json";
+import groundAsset from "@/assets/ground-breath.jpg";
+import portraitAsset from "@/assets/michaela-portrait.jpg";
+import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png";
+import studioLightAsset from "@/assets/studio-licht.jpg";
+import studioGroupAsset from "@/assets/studio-gruppe.jpg";
+import studioDetailAsset from "@/assets/studio-detail.jpg";
+import gpbaBadge from "@/assets/gpba-badge.png";
+import sevenDirectionsBadge from "@/assets/seven-directions-badge.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
