@@ -3,14 +3,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/Reveal";
 import { ConsentProvider, useConsent } from "@/components/CookieConsent";
 import { MapEmbed } from "@/components/MapEmbed";
-import groundAsset from "@/assets/ground-breath.jpg.asset.json";
-import portraitAsset from "@/assets/michaela-portrait.jpg.asset.json";
-import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png.asset.json";
-import studioLightAsset from "@/assets/studio-licht.jpg.asset.json";
-import studioGroupAsset from "@/assets/studio-gruppe.jpg.asset.json";
-import studioDetailAsset from "@/assets/studio-detail.jpg.asset.json";
-import gpbaBadge from "@/assets/gpba-badge.png.asset.json";
-import sevenDirectionsBadge from "@/assets/seven-directions-badge.png.asset.json";
+import groundAsset from "@/assets/ground-breath.jpg";
+import portraitAsset from "@/assets/michaela-portrait.jpg";
+import eggersdorfAsset from "@/assets/eggersdorf-luftbild.png";
+import studioLightAsset from "@/assets/studio-licht.jpg";
+import studioGroupAsset from "@/assets/studio-gruppe.jpg";
+import studioDetailAsset from "@/assets/studio-detail.jpg";
+import gpbaBadge from "@/assets/gpba-badge.png";
+import sevenDirectionsBadge from "@/assets/seven-directions-badge.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -610,7 +610,7 @@ function IndexContent() {
       {/* Hero */}
       <section className="relative min-h-[92vh] overflow-hidden pt-20">
         <img
-          src={groundAsset.url}
+          src={groundAsset}
           alt="Michaela Seiß liegt im Laub, eine Hand auf der Brust, die andere auf dem Bauch"
           width={1600}
           height={1208}
@@ -666,7 +666,7 @@ function IndexContent() {
                 className="absolute -left-6 -top-6 h-40 w-40 rounded-full bg-sand/70 blur-2xl"
               />
               <img
-                src={portraitAsset.url}
+                src={portraitAsset}
                 alt="Michaela Seiß, zertifizierte Breathwork-Trainerin, im Sonnenlicht vor grünen Blättern"
                 width={1200}
                 height={1600}
@@ -760,7 +760,7 @@ function IndexContent() {
           <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-5">
             <Reveal className="col-span-2 md:col-span-7">
               <img
-                src={studioLightAsset.url}
+                src={studioLightAsset}
                 alt="Heller Breathwork-Raum mit Matten, Kissen und Pflanzen"
                 width={768}
                 height={1024}
@@ -771,7 +771,7 @@ function IndexContent() {
             <div className="col-span-2 grid grid-cols-2 gap-3 md:col-span-5 md:grid-cols-1 md:gap-5">
               <Reveal delay={100}>
                 <img
-                  src={studioGroupAsset.url}
+                  src={studioGroupAsset}
                   alt="Vorbereitete Matten und Bolster für eine gemeinsame Breathwork-Session"
                   width={768}
                   height={1024}
@@ -781,7 +781,7 @@ function IndexContent() {
               </Reveal>
               <Reveal delay={180}>
                 <img
-                  src={studioDetailAsset.url}
+                  src={studioDetailAsset}
                   alt="Achtsam vorbereiteter Platz mit Sitzkissen, Kerzen und Atemzubehör"
                   width={768}
                   height={1024}
@@ -871,13 +871,13 @@ function IndexContent() {
               {
                 title: "Certified Practitioner",
                 sub: "Seven Directions® Breathwork",
-                img: sevenDirectionsBadge.url,
+                img: sevenDirectionsBadge,
                 alt: "Zertifikat Certified Practitioner der Seven Directions Breathwork School",
               },
               {
                 title: "Ethically Compliant Breathworker",
                 sub: "Global Professional Breathwork Alliance (GPBA)",
-                img: gpbaBadge.url,
+                img: gpbaBadge,
                 alt: "Siegel Ethically Compliant Breathworker der Global Professional Breathwork Alliance",
               },
             ].map((b, i) => (
@@ -926,7 +926,7 @@ function IndexContent() {
           </Reveal>
           <Reveal delay={120}>
             <img
-              src={eggersdorfAsset.url}
+              src={eggersdorfAsset}
               alt="Luftbild von Eggersdorf bei Graz mit Kirche, Ortszentrum und steirischen Hügeln"
               width={1600}
               height={912}
