@@ -12,7 +12,7 @@ import netlify from "@netlify/vite-plugin-tanstack-start";
 // plugin is disabled and the Netlify plugin configures the build instead.
 // Same detection the wrapper itself uses (see isSandboxEnvironment).
 const isLovableSandbox =
-  process.env.LOVABLE_SANDBOX === "1" || !!process.env.DEV_SERVER__PROJECT_PATH;
+  process.env["LOVABLE_SANDBOX"] === "1" || !!process.env["DEV_SERVER__PROJECT_PATH"];
 
 export default defineConfig(
   isLovableSandbox
