@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Deployment
+
+- `vite.config.ts` keeps the built-in Cloudflare nitro target for Lovable publish builds (sandbox, detected via `LOVABLE_SANDBOX`/`DEV_SERVER__PROJECT_PATH`) and uses `@netlify/vite-plugin-tanstack-start` with `nitro: false` everywhere else; `netlify.toml` publishes `dist/client` via `npm run build`. Why: the site must deploy to both Lovable and Netlify without duplicate nitro/deploy plugins.
